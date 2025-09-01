@@ -7,27 +7,136 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    // src/pages/Login.tsx import { useState } from "react"; import { getAuth,
-    RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth"; export
-    default function Login() const [phone, setPhone] = useState(""); const [otp,
-    setOtp] = useState(""); const auth = getAuth(); const sendOtp = async () =>
-    { const verifier = new RecaptchaVerifier("recaptcha-container", {}, auth);
-    await signInWithPhoneNumber(auth, phone, verifier); }; const verifyOtp =
-    async () => { // after OTP confirmation, call backend /auth/verify }; return
-    <div className="form-container">
-      <h2>Login with Phone</h2>
-      <input
-        type="text"
-        placeholder="+91 9876543210"
-        value="{phone}"
-        onChange="{(e)"
-      />
-      setPhone(e.target.value)} />
-      <button onClick="{sendOtp}">Send OTP</button>
-      <input type="text" placeholder="Enter OTP" value={otp} onChange={(e) =>
-      setOtp(e.target.value) />
-      <button onClick="{verifyOtp}">Verify</button>
-      <div id="recaptcha-container"></div>
-    </div>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <title>Login</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+          }
+          .form-container {
+            max-width: 400px;
+            margin: 3rem auto;
+            padding: 1.5rem;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+          }
+          input,
+          button {
+            width: 100%;
+            margin-bottom: 0.75rem;
+            padding: 0.5rem;
+          }
+          button {
+            background: #1976d2;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="form-container">
+          <h2>Login with Phone</h2>
+          <input type="text" placeholder="+91 9876543210" />
+          <button>Send OTP</button>
+          <input type="text" placeholder="Enter OTP" />
+          <button>Verify</button>
+          <div id="recaptcha-container"></div>
+        </div>
+        <div class="form-step">
+          <h2>Society Details</h2>
+          <input type="text" placeholder="Society Name" />
+          <input type="text" placeholder="Address" />
+          <input type="text" placeholder="City" />
+          <input type="text" placeholder="State" />
+          <input type="text" placeholder="Pincode" />
+          <button>Next Step</button>
+        </div>
+        <div class="upload-container">
+          <h2>Upload Documents</h2>
+          <label>PAN Card</label>
+          <input type="file" />
+          <label>Registration Certificate</label>
+          <input type="file" />
+          <label>Address Proof</label>
+          <input type="file" />
+          <button>Upload & Continue</button>
+        </div>
+        <div class="payment-box">
+          <h2>Payment</h2>
+          <p>Amount: ₹1000</p>
+          <button>Pay with Razorpay</button>
+          <p>Status: Pending until payment confirmed via webhook</p>
+        </div>
+        <style>
+          body {
+            font-family: sans-serif;
+            background: #f8f8f8;
+          }
+          table {
+            width: 90%;
+            margin: 2rem auto;
+            border-collapse: collapse;
+          }
+          th,
+          td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+          }
+          th {
+            background: #eee;
+          }
+          button {
+            margin-right: 0.5rem;
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+          }
+          .approve {
+            background: #28a745;
+            color: white;
+          }
+          .reject {
+            background: #dc3545;
+            color: white;
+          }
+        </style>
+        <h2 style="text-align: center">Pending Registrations</h2>
+        <table>
+          <tr>
+            <th>Society</th>
+            <th>City</th>
+            <th>Payment Status</th>
+            <th>Actions</th>
+          </tr>
+          <tr>
+            <td>Green Residency</td>
+            <td>Mumbai</td>
+            <td>Paid</td>
+            <td>
+              <button class="approve">Approve</button>
+              <button class="reject">Reject</button>
+            </td>
+          </tr>
+        </table>
+        <h2 style="text-align: center">Funnel Analytics</h2>
+        <div class="funnel">
+          <div class="stage"><span>Started</span><span>100</span></div>
+          <div class="stage"><span>Docs Uploaded</span><span>80</span></div>
+          <div class="stage"><span>Payment Initiated</span><span>60</span></div>
+          <div class="stage"><span>Paid</span><span>55</span></div>
+          <div class="stage"><span>Submitted</span><span>50</span></div>
+          <div class="stage"><span>Approved</span><span>45</span></div>
+        </div>
+      </body>
+    </html>
   </body>
 </html>
